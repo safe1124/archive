@@ -125,6 +125,17 @@ export function ProductArt({ product, className, compact = false }: { product: P
           <rect x="96" y="76" width="8" height="30" rx="4" fill="rgba(255,255,255,.5)" stroke="none" />
         </g>
       )}
+
+      {product.form === "additive" && (
+        <g stroke={edge} strokeWidth="1.4">
+          <rect x="101" y="34" width="38" height="14" rx="4" fill={deep} stroke="none" />
+          <rect x="94" y="46" width="52" height="112" rx="12" fill={body} />
+          <rect x="99" y="78" width="42" height="48" rx="5" fill="rgba(255,255,255,.86)" />
+          <path d="M105 94h30M105 102h20M105 110h26" stroke={deep} strokeWidth="2" strokeLinecap="round" opacity=".7" />
+          <path d="M104 55h10" stroke="rgba(255,255,255,.5)" strokeWidth="4" strokeLinecap="round" />
+          <ellipse cx="120" cy="160" rx="28" ry="6" fill={body} />
+        </g>
+      )}
     </svg>
   );
 }
