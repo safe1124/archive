@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* Apple 스토어 계열 팔레트. 회색 두 단계, 파랑 하나, 주황 하나로만 씁니다. */
+@theme {
+  --color-ink: #1d1d1f;
+  --color-ink-soft: #6e6e73;
+  --color-line: #d2d2d7;
+  --color-line-soft: #e8e8ed;
+  --color-surface: #fff;
+  --color-surface-alt: #f5f5f7;
+  --color-blue: #0071e3;
+  --color-blue-link: #0066cc;
+  --color-accent: #bf4800;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro KR", "SF Pro Text",
+      "Apple SD Gothic Neo", "Helvetica Neue", "Malgun Gothic", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.47059;
+    letter-spacing: -0.022em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 4px solid rgba(0, 125, 250, 0.6);
+    outline-offset: 1px;
+    border-radius: 4px;
+  }
+}
+
+/* 아래 클래스는 모두 components 레이어에 둡니다.
+   그래야 같은 요소에 붙인 Tailwind 유틸리티(pt-9, text-[14px] 등)가 항상 이깁니다. */
+@layer components {
+  /* 페이지 전체가 같은 세로선에 맞도록 폭은 한 종류만 씁니다.
+     padding 축약형을 쓰면 유틸리티의 위아래 여백을 덮어써 버리므로 가로 방향만 지정합니다. */
+  .wrap,
+  .wrap-wide {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .wrap-text {
+    max-width: 640px;
+  }
+
+  /* 화면 폭에 따라 자연스럽게 줄어드는 제목 스케일. */
+  .headline {
+    font-size: clamp(26px, 3.4vw, 40px);
+    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  .headline-lg {
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+  }
+
+  .subhead {
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+  }
+
+  /* 섹션을 나누는 얇은 선. 굵은 구분선 대신 이 한 겹만 씁니다. */
+  .rule {
+    border-top: 1px solid var(--color-line-soft);
+  }
+
+  .link-blue {
+    color: var(--color-blue-link);
+  }
+
+  .link-blue:hover {
+    text-decoration: underline;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 980px;
+    padding-block: 8px;
+    padding-inline: 16px;
+    font-size: 17px;
+    line-height: 1.23536;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    white-space: nowrap;
+    transition: background-color 0.12s linear, color 0.12s linear, border-color 0.12s linear;
+  }
+
+  .btn-blue {
+    background: var(--color-blue);
+    color: #fff;
+  }
+
+  .btn-blue:hover {
+    background: #0077ed;
+  }
+
+  .btn-quiet {
+    background: transparent;
+    color: var(--color-blue-link);
+    border: 1px solid var(--color-blue-link);
+  }
+
+  .btn-quiet:hover {
+    background: var(--color-blue-link);
+    color: #fff;
+  }
+
+  .btn-sm {
+    padding-block: 5px;
+    padding-inline: 14px;
+    font-size: 14px;
+  }
+
+  .btn:disabled {
+    opacity: 0.32;
+    pointer-events: none;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
